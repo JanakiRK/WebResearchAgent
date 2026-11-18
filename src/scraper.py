@@ -24,10 +24,10 @@ def scrape_webpage(url: str) -> dict:
 
         title = soup.title.get_text(strip=True) if soup.title else ""
 
-        for element in soup(["script", "style", "nav", "footer"]):
+        for element in soup(["script", "style", "nav", "footer", "header", "aside"]):
             element.decompose()
 
-        text = soup.get_text(separator=" ", strip=True)
+        text = " ".join(soup.get_text(separator=" ", strip=True).split())
 
         return {
             "url": url,
