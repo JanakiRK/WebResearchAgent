@@ -8,8 +8,8 @@ def scrape_webpage(url: str) -> dict:
     Download a webpage and extract its title and text.
     """
 
-    if not isinstance(url, str) or not url.strip():
-        raise ValueError("URL must be a non-empty string.")
+    if not url.startswith(("http://", "https://")):
+        raise ValueError("URL must start with http:// or https://")
 
     try:
         response = requests.get(
